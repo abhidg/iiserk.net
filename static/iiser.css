@@ -1,0 +1,20 @@
+
+body {margin:auto; width:75%}
+
+div#header {border-bottom: 4px dotted silver}
+p.feedTitle {margin-left: 45px; font-size: 120%}
+h1 {font-family: Arial; font-weight: normal; color: #A5823A;}
+span.smaller {color:silver}
+p {line-height:1.4}
+div#feed {float:left; width:40%; padding:5px;
+	font-family: Arial, sans-serif; font-size: 80%}
+div#feed li {margin-top: 10px; padding: 5px; border-bottom: 1px dashed silver}
+p.date {margin-top: 0px; font-weight: bold; font-size: 80%}
+div#feed a {text-decoration:none; color: #7c3c2c}
+div#feed div {margin-top: -10px; line-height: 1.3}
+div#text {float:right; width: 50%; margin-top: 30px; font-family: Arial; font-size: 80%}
+
+div#linkbox{float:right; width:50%; padding: 5px; border-top: 1px solid silver; 
+	font-family: Arial, sans-serif; font-size: 80%}
+div#linkbox a {font-weight: bold; text-decoration: none}
+li {line-height: 1.5}

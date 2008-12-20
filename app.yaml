@@ -1,0 +1,61 @@
+application: iiser-kolkata
+version: 1
+runtime: python
+api_version: 1
+
+handlers:
+
+- url: /~(.*)
+  script: userhandler.py
+
+- url: /static
+  static_dir: static
+
+- url: /adduser0
+  script: userhandler.py
+
+- url: /adduser1
+  script: userhandler.py
+
+- url: /adduser2
+  script: userhandler.py
+  login: required
+
+- url: /adduser3
+  script: userhandler.py
+
+- url: /adduser5
+  script: userhandler.py
+  login: required
+
+- url: /useredit
+  script: userhandler.py
+  login: required
+
+- url: /usereditsubmit
+  script: userhandler.py
+  login: required
+
+- url: /adminedit0
+  script: userhandler.py
+  login: admin
+
+- url: /adminedit1
+  script: userhandler.py
+  login: admin
+
+- url: /admineditsubmit
+  script: userhandler.py
+  login: admin
+
+- url: /students.html
+  script: userhandler.py
+  
+- url: /img/(.*)
+  script: userhandler.py
+
+- url: /css/(.*)
+  script: userhandler.py
+
+- url: /
+  script: main.py
