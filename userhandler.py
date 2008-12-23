@@ -1365,6 +1365,7 @@ user = webapp.WSGIApplication([(r'/%7E(.*)', UserPage),
 				('/img/(.*)', ImageSpew),
 				('/css/(.*)', CssSpew),
 				('/students.html', StudentsList),
+				('/students',StudentsList),
 				('/adduser0', UserAddStep0),
 				('/adduser1', UserAddStep1),
 				('/adduser2', UserAddStep2),			#Login required

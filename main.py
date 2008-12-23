@@ -71,7 +71,7 @@ class HomePage(webapp.RequestHandler):
 			</div>
 			<div id="linkbox">
 			<ul>
-			<li>Students' <a href="/students.html">homepages</a>.</li>
+			<li>Students' <a href="/students">homepages</a>.</li>
 			<li>File Archives: <a href="http://phy.iiserk.net">Physics</a>, <a href="http://chem.iiserk.net">Chemistry</a>, <a href="http://bio.iiserk.net">Biology</a> and <a 
 			href="http://maths.iiserk.net">Mathematics</a></li>
 			<li><a href="http://lib.iiserkol.ac.in/cgi-bin/gw_48_0_3_3/chameleon/">Library</a></li>

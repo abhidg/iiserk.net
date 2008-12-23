@@ -51,6 +51,9 @@ handlers:
 - url: /students.html
   script: userhandler.py
   
+- url: /students
+  script: userhandler.py
+
 - url: /img/(.*)
   script: userhandler.py
 
