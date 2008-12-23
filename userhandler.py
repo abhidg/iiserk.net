@@ -47,17 +47,18 @@ class StudentsList(webapp.RequestHandler):
 		self.response.out.write("""
 					<html>
 					<head>
+					<link rel="stylesheet" href="/static/iiser1.css" type="text/css" />
 					</head>
 					<body>
-						<h2>Welcome </h2>
-						<p>Currently we have the following users in the DBase:</p>
-						<p>
+						<h2>Welcome</h2>
+						<p>Currently we have the following users' profiles:</p>
 					""")
+		self.response.out.write("<ul>")
 		for user in allusers:
-			self.response.out.write("""
-						<a href='/~""" + user.username + """'>""" + user.userfullname + """</a><br/>
+			self.response.out.write("""<li>
+						<a href='/~""" + user.username + """'>""" + user.userfullname + """</a></li>
 						""")
-		self.response.out.write("""
+		self.response.out.write("""</ul>
 					</p>
 					<p><a href='"""+users.create_login_url("/adduser0")+"""'>Add</a> user's page.</p>
 					<p><a href='"""+users.create_login_url("/useredit")+"""'>Edit</a> user's page.</p>
