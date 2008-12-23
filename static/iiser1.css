@@ -1,2 +1,8 @@
-body {width:70%; margin:auto}
+body {width:70%; padding: 5px; margin:auto; margin-top:10px;
+	font-family: Arial, sans-serif; color: #333333;}
+a {text-decoration: none}
+li {line-height: 1.5}
+
+
+
 
