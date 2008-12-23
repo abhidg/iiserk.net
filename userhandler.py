@@ -56,10 +56,11 @@ class StudentsList(webapp.RequestHandler):
 		self.response.out.write("<ul>")
 		for user in allusers:
 			self.response.out.write("""<li>
-						<a href='/~""" + user.username + """'>""" + user.userfullname + """</a></li>
+						<a href='/~""" + user.username + """'>""" + user.userfullname + "</a>" + """ (<span class="nick">""" + user.username + """</span>)</li>
 						""")
 		self.response.out.write("""</ul>
-					</p>
+					<p>You can email any of the users by adding @iiserk.net after the username or by mailing
+					the user at his/her preferred email ID on the profile page.</p>
 					<p><a href='"""+users.create_login_url("/adduser0")+"""'>Add</a> user's page.</p>
 					<p><a href='"""+users.create_login_url("/useredit")+"""'>Edit</a> user's page.</p>
 					<p><a href='"""+users.create_login_url("/adminedit0")+"""'>Admins'</a>page.</p>
