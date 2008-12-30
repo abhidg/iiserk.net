@@ -125,7 +125,7 @@ class UserAddStep0(webapp.RequestHandler):			#
 						<p>Welcome, this page will guide you through the process of creating your own webpage in
 						a few minutes.</p>
 						<ul>
-						<li>If you already have an <a href="http://iiserk.net">iiserk.net account</a>, proceed to the
+						<li>If you already have an <a href="http://iiserk.net">iiserk.net</a> account, proceed to the
 							<a href='""" + users.create_login_url("/adduser2") + """'>login page</a>.</li>
 						<li>If you haven't got an <a href="http://iiserk.net">iiserk.net</a> account, then request one at
 						<a href="mailto:www@iiserk.net">www@iiserk.net</a>.</li>
