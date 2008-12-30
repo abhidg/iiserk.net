@@ -123,20 +123,13 @@ class UserAddStep0(webapp.RequestHandler):			#
 						<div>
 						<h3>If you are a student of IISERK</h3>
 						<p>Welcome, this page will guide you through the process of creating you own webpage in
-						a few minutes</p>
-						<div>
-							<p> Kindly select the correct choice :</p>	
-							<form name="userac" action="/adduser1" method="post">
-								iiserk.net account:
-								<select name="account">
-								<option>Select the correct one</option>
-								<option>I have an iiserk.net account</option>
-								<option>I do not have one</option>
-								</select>
-								<input type="submit" value="Submit">
-							</form>
-						</div>
-						</div>
+						a few minutes.</p>
+						<ul>
+						<li>If you already have an <a href="http://iiserk.net">iiserk.net account</a>, proceed to the
+							<a href='""" + users.create_login_url("/adduser2") + """'>login page</a>.</li>
+						<li>If you haven't got an <a href="http://iiserk.net">iiserk.net</a> account, then request one at
+						<a href="mailto:www@iiserk.net">www@iiserk.net</a>.</li>
+						</ul>
 					</body>
 					</html>
 					""")
