@@ -5,8 +5,8 @@ li {line-height: 1.5}
 h1 {font-weight: normal; color: #319aaa}
 span.nick {color:grey}
 
-div#feed {float: left; width: 40%; min-width:250px; font-size: 90%}
-div#feed li div {font-family: monospace; font-size: 10pt}
+div#feed {float: left; width: 40%; min-width:250px; font-size: 70%}
+div#feed li div {font-family: monospace; font-size: 8pt}
 p.date {margin-top: 0; color: #666}
 div#feed li {margin-bottom: 10px; background: #fafafa}
 div#feed li {margin-left: -20px}
