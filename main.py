@@ -26,7 +26,8 @@ from google.appengine.api import urlfetch
 class HomePage(webapp.RequestHandler):
 	def get(self):
 		try:
-			feeds = urlfetch.fetch("http://feedproxy.google.com/Iiserk?format=sigpro")
+#			feeds = urlfetch.fetch("http://feedproxy.google.com/Iiserk?format=sigpro")
+			feeds = urlfetch.fetch("http://feeds.feedburner.com/iiserk-notices?format=sigpro")
 			feedtext = feeds.content
 			feedtext = feedtext.replace('document.write(\'','')
 			feedtext = feedtext.replace('\');','')
@@ -42,7 +43,7 @@ class HomePage(webapp.RequestHandler):
 			<meta name="generator" content="HTML Tidy for Linux (vers 1 September 2005), see www.w3.org">
 			<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 			<meta name="verify-v1" content="UpHllLbRYQI9rBcZMnPc6Vnk7pmFZ7CtOMG8QYb3irI=">
-			<link rel="stylesheet" href="/static/iiser.css" type="text/css">
+			<link rel="stylesheet" href="/static/iiser1.css" type="text/css">
 			<title>IISER Kolkata Students' Site</title>
 
 			<style type="text/css">
@@ -59,33 +60,23 @@ class HomePage(webapp.RequestHandler):
 			</div>
 			""" + feedtext + """
 			<div id="text">
-			<p>The Government of India, through the Ministry of Human Resource Development (MHRD),
-			and based on the recommendation of Scientific Advisory Council to the Prime Minister, 
-			decided to create a few undergraduate science universities. Named as the INDIAN INSTITUTE
-			OF SCIENCE EDUCATION AND RESEARCH (IISER), these IISERs are designed to reach the
-			prestigious position in the global setting that IISc, IIMs and IITs presently enjoy.
-			Two of the IISERs located in Pune and Kolkata started their academic programme in 
-			August 2006. The third in Mohali, Chandigarh has started its own activities in 2007.</p>
-
-			<p>Each IISER is an autonomous institution awarding its own degrees. The central theme
-			of the IISER is to integrate education with research so that undergraduate teaching 
-			as well as doctoral and postdoctoral research work are carried out in symbiosis.
-			Students are encouraged to carry out research projects during the vacation periods in the
-			first four years of their Masters programme in various research institutes outside IISER.
-			In the fifth year the students are required to participate in a research seminar
-			and also carry out a research project on which a thesis will have to be written." -- 
-			<a href="http://www.iiserkol.ac.in">http://www.iiserkol.ac.in</a></p>
+			<p>
+			We're here to write about us. Bound by a common love
+of science, this website is the showcase of what's
+happening with those who <a href="/students">study</a> at this cool place,
+a <a href="http://planet.iiserk.net">zeitgeist</a> of <a href="http://www.iiserkol.ac.in">IISER Kolkata</a>.</p>
 			</div>
 			<div id="linkbox">
 			<ul>
-			<li>Students' <a href="/students">homepages</a>.</li>
-			<li>File Archives: <a href="http://phy.iiserk.net">Physics</a>,
-			<a href="http://chem.iiserk.net">Chemistry</a>, <a href="http://bio.iiserk.net">Biology</a>
-			and <a href="http://maths.iiserk.net">Mathematics</a></li>
+			<li><a href="/students">students' homepages</a></li>
+			<li>file archives<br/><a href="http://phy.iiserk.net">physics</a>,
+			<a href="http://chem.iiserk.net">chemistry</a>,
+			<a href="http://bio.iiserk.net">biology</a>,
+			<a href="http://maths.iiserk.net">mathematics</a></li>
 
-			<li><a href="http://lib.iiserkol.ac.in/cgi-bin/gw_48_0_3_3/chameleon/">Library</a></li>
-			<li>See our hostel <a href="http://server.iiserk.net">server</a> web page.</li>
-			<li><a href="http://planet.iiserk.net">Planet IISERK</a></li>
+			<li><a href="http://lib.iiserkol.ac.in/cgi-bin/gw_48_0_3_3/chameleon/">institute library</a></li>
+			<li>hostel server (currently down)</li>
+			<li><a href="http://planet.iiserk.net">planet iiserk</a></li>
 			</ul>
 			</div>
 			</div>
