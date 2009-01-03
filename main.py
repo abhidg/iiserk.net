@@ -69,6 +69,8 @@ a <a href="http://planet.iiserk.net">zeitgeist</a> of <a href="http://www.iiserk
 			<div id="linkbox">
 			<ul>
 			<li><a href="/students">students' homepages</a></li>
+			<li><a href="http://mail.iiserk.net">webmail</a>,
+<a href="http://mx1.iiserkol.ac.in">college webmail</a></li>
 			<li>file archives<br/><a href="http://phy.iiserk.net">physics</a>,
 			<a href="http://chem.iiserk.net">chemistry</a>,
 			<a href="http://bio.iiserk.net">biology</a>,
