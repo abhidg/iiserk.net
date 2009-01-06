@@ -44,28 +44,31 @@ class User(db.Model):						# Class to store details of individuals in the DB
 class StudentsList(webapp.RequestHandler):
 	def get(self):
 		allusers = db.GqlQuery("SELECT * FROM User ORDER BY username")
-		self.response.out.write("""
-					<html>
-					<head>
-					<link rel="stylesheet" href="/static/iiser1.css" type="text/css" />
-					</head>
-					<body>
-						<h2>Welcome</h2>
-						<p>Currently we have the following users' profiles:</p>
-					""")
-		self.response.out.write("<ul>")
+		
+		self.response.out.write("""<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link rel="stylesheet" href="/static/iiser1.css" type="text/css" />
+  <title>students' homepages</title>
+</head>
+<body>
+  <h1>students' homepages</h1>
+  <p>Currently we have the following users' profiles:</p>
+""")
+
+		self.response.out.write("<ul>\n")
 		for user in allusers:
-			self.response.out.write("""<li>
-						<a href='/~""" + user.username + """'>""" + user.userfullname + "</a>" + """ (<span class="nick">""" + user.username + """</span>)</li>
-						""")
+			self.response.out.write("""  <li><a href='/~""" + user.username + """'>""" \
+				 + user.userfullname + "</a>" + """ (<span class="nick">""" + \
+					 user.username + """</span>)</li>\n""")
 		self.response.out.write("""</ul>
-					<p>You can email any of the users by adding @iiserk.net after the username or by mailing
-					the user at his/her preferred email ID on the profile page.</p>
-					<p><a href='"""+users.create_login_url("/adduser0")+"""'>Add</a> user's page.</p>
-					<p><a href='"""+users.create_login_url("/useredit")+"""'>Edit</a> user's page.</p>
-					<p><a href='"""+users.create_login_url("/adminedit0")+"""'>Admins'</a>page.</p>
-					</body></html>
-					""")
+<p>You can email any of the users by adding @iiserk.net after the username or by mailing
+the user at his/her preferred email ID on the profile page.</p>
+<p><a href='"""+users.create_login_url("/adduser0").replace("&","&amp;")+"""'>Add</a> user's page.</p>
+<p><a href='"""+users.create_login_url("/useredit").replace("&","&amp;")+"""'>Edit</a> user's page.</p>
+<p><a href='"""+users.create_login_url("/adminedit0").replace("&", "&amp;") +"""'>Admins'</a>page.</p>
+</body></html>""")
 
 class UserPage(webapp.RequestHandler):				#Serves out cuser homepage, $cuser is fetched from the requested url
 	def get(self,cuser):
