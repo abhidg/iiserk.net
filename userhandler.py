@@ -114,28 +114,29 @@ class CssSpew(webapp.RequestHandler):
 
 class UserAddStep0(webapp.RequestHandler):			#
 	def get(self):
-		self.response.headers['Content-Type'] = 'text/html'
-		self.response.out.write("""
-					<html>
-					<head>
-					<link rel="stylesheet" href="/static/iiser1.css" type="text/css" />
-					</head>
-					<body>
-						<div><h1>Webpage creator for new user</h1></div>
-						<div><h3>If you are not a student of IISER Kolkata, then no need to proceed further</h3></div>
-						<div>
-						<h3>If you are a student of IISERK</h3>
-						<p>Welcome, this page will guide you through the process of creating your own webpage in
-						a few minutes.</p>
-						<ul>
-						<li>If you already have an <a href="http://iiserk.net">iiserk.net</a> account, proceed to the
-							<a href='""" + users.create_login_url("/adduser2") + """'>login page</a>.</li>
-						<li>If you haven't got an <a href="http://iiserk.net">iiserk.net</a> account, then request one at
-						<a href="mailto:www@iiserk.net">www@iiserk.net</a>.</li>
-						</ul>
-					</body>
-					</html>
-					""")
+		self.response.headers['Content-Type'] = 'text/html; charset=utf-8'
+		self.response.out.write("""<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link rel="stylesheet" href="/static/iiser1.css" type="text/css" />
+  <title>Webpage creator for new user</title>
+</head>
+<body>
+  <h1>Webpage creator for new user</h1>
+  <h3>If you are not a student of IISER Kolkata, then no need to proceed further</h3>
+  <h3>If you are a student of IISERK</h3>
+    <p>Welcome, this page will guide you through the process
+    of creating your own webpage in a few minutes.</p>
+
+    <ul>
+      <li>If you already have an <a href="http://iiserk.net">iiserk.net</a> account, proceed to the
+        <a href='""" + users.create_login_url("/adduser2").replace("&","&amp;") + """'>login page</a>.</li>
+      <li>If you haven't got an <a href="http://iiserk.net">iiserk.net</a> account, then request one at
+        <a href="mailto:www@iiserk.net">www@iiserk.net</a>.</li>
+    </ul>
+</body>
+</html>	""")
 
 class UserAddStep1(webapp.RequestHandler):
 	def post(self):
