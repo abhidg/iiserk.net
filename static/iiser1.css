@@ -1,5 +1,10 @@
-body {width:70%; padding: 5px; margin:auto; margin-top:10px;
-	font-family: Arial, sans-serif; color: #333333;}
+body {font-family: Arial, sans-serif}
+@media screen {
+ 	body {width:70%; padding: 5px; margin:auto; margin-top:10px;
+	color: #333333;} }
+@media print {
+	body {font-size: 90%; color:black}
+}
 a {text-decoration: none}
 li {line-height: 1.5}
 h1 {font-weight: normal; color: #319aaa}
@@ -13,4 +18,7 @@ div#feed li {margin-left: -20px}
 p {line-height: 1.5}
 p.feedTitle {display: none}
 div#text, div#linkbox {float:right; width: 50%;}
-
+table#traintimings {font-size:small}
+table#traintimings th {text-align:left; background: #ddd}
+col#k2sd, col#s2kd { background: #f0f0f0}
+p#footer {font-size:small; border-top:1px dotted grey}

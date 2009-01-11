@@ -259,41 +259,39 @@ class UserAddStep3(webapp.RequestHandler):			#No login needed, a/c creation, pas
 class UserAddStep5(webapp.RequestHandler):			#Login needed, HTML generation from submitted form
 	def post(self):
 		loggedin = users.get_current_user()
-		htmlhead="""
-			<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-			<html xmlns="http://www.w3.org/1999/xhtml">
-			<head>
-			<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-			<meta name="generator" content="HTML Tidy for Linux (vers 1 September 2005), see www.w3.org" />
-			<meta content='Personal website of """ + self.request.get('formuserfullname') + """.' name='description'/>
-			<meta content='"""+ self.request.get('formuserfullname') +""","""+ loggedin.nickname() +""",iiser,
-			iiserk, iiserkol, iiserkolkata, """+ self.request.get('formusermajor') +"""' name='keywords'/>
-			<title>"""+self.request.get('formuserfullname')+"""</title>
-			<link rel="stylesheet" href='/css/"""+ loggedin.nickname() +"""' type="text/css" />
-			</head>"""
+		htmlhead="""<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta content='Personal website of """ + self.request.get('formuserfullname') + """.' name='description'/>
+  <meta content='"""+ self.request.get('formuserfullname') +""","""+ loggedin.nickname() +""",iiser,
+	iiserk, iiserkol, iiserkolkata, """+ self.request.get('formusermajor') +"""' name='keywords'/>
+ 
+  <title>"""+self.request.get('formuserfullname')+"""</title>
+  <link rel="stylesheet" href='/css/"""+ loggedin.nickname() +"""' type="text/css" />
+</head>"""
 			
 		htmlbody1="""
-			<body>
-			<h1>"""+ self.request.get('formuserfullname') +"""</h1>
-			<div id="designation">
-			<h3>iiser kolkata</h3>
-
-			<p>student &raquo; """+ self.request.get('formusermajor') +""" major, MS """+ self.request.get('formuseryear') +""" Year<br />
-			batch &raquo; """+self.request.get('formuserbatch')+"""<br /></p>
-			</div>
-			<div id="sidephoto"><img src='/img/"""+ loggedin.nickname() +"""' alt='"""+ self.request.get('formuserfullname') +"""' width="250" /></div>
+<body>
+ <h1>"""+ self.request.get('formuserfullname') +"""</h1>
+ <div id="designation">
+    <h3>iiser kolkata</h3>
+     <p>student &raquo; """+ self.request.get('formusermajor') +""" major, MS """+ self.request.get('formuseryear') +""" Year<br />
+        batch &raquo; """+self.request.get('formuserbatch')+"""<br /></p>
+ </div>
+ <div id="sidephoto">
+    <img src='/img/"""+ loggedin.nickname() +"""' alt='"""+ self.request.get('formuserfullname') +"""' width="250" />
+ </div>
 			"""
 			
-		about="""
-			<div id="about">
-			<ul><pre>""" + self.request.get('formuserabout') + """</pre></ul>
-			</div>
+		about=""" <div id="about">
+  <pre>""" + self.request.get('formuserabout') + """</pre>
+ </div>
 			"""
-		contact_top="""
-			<div id="contact">
-			<h3>contact</h3>
-			<p>
-			"""
+		contact_top=""" <div id="contact">
+   <h3>contact</h3>
+   <p>"""
 		contact_lines =""
 		if (self.request.get('formuseremail')) != "":
 			contact_lines += """email: <a href='mailto:""" +(self.request.get('formuseremail'))+ """'>"""+ (self.request.get('formuseremail')) +"""</a><br />"""
@@ -310,8 +308,8 @@ class UserAddStep5(webapp.RequestHandler):			#Login needed, HTML generation from
 		contact = contact_top + contact_lines + contact_bottom	
 			
 		htmlbody2="""
-			</body>
-			</html>
+</body>
+</html>
 			"""
 		if self.request.get('formuserhtml') != "":
 			htmlcode = self.request.get('formuserhtml')
@@ -320,49 +318,38 @@ class UserAddStep5(webapp.RequestHandler):			#Login needed, HTML generation from
 		if self.request.get('formusercss') !="":
 			csscode = self.request.get('formusercss')
 		else:
-			csscode="""
-				body {
-				width: 720px; margin:auto;
-				background-color:transparent; padding: 10px;
-				font-family : Arial, Helvetica, sans-serif;
-				color : #333333;
-				}
+			csscode="""body {
+  width: 720px; margin:auto;
+  background-color:transparent; padding: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #333333;
+}
 
-				#designation {
-				width : auto;
-				font : 85% "Trebuchet MS", Arial, Helvetica, sans-serif;
-				color : grey;
-				}
+#designation {
+  width : auto;
+  font : 85% "Trebuchet MS", Arial, Helvetica, sans-serif;
+  color : grey;
+}
 
-				#designation h3 {
-				font : 170% arial;
-				color : gold;
-				text-transform : lowercase;
-				margin : 0;
-				padding : 0 0 0 0px;
-				}
+#designation h3 {
+  font: 170% arial; color: gold;
+  text-transform: lowercase;
+  margin: 0; padding : 0;
+}
 
-				#sidephoto {
-				float : left;
-				width : 300px;
-				padding : 5px;
-				}
+#sidephoto {  float: left;  width: 300px; padding: 5px; }
 
-				#about {
-				font : 90% Arial, Helvetica, sans-serif;
-				float : right;
-				width : 400px;
-				height : 500px;
-				padding : 5px;
-				}
+#about {
+  font: 90% Arial, Helvetica, sans-serif;
+  float: right; width: 400px;
+  height: 500px;  padding: 5px;
+}
 
-				#contact {
-				float : left;
-				width : auto;
-				padding : 5px;
-				font : 85% "Trebuchet MS", Arial, Helvetica, sans-serif;
-				color : grey;
-				}
+#contact {
+  float: left; width: auto;  padding: 5px;
+  font: 85% "Trebuchet MS", Arial, Helvetica, sans-serif;
+  color: grey;
+}
 				"""
 		checkflag = 0	
 		allusers = db.GqlQuery("SELECT * FROM User ORDER BY username")

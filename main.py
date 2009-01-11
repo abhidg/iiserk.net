@@ -87,6 +87,7 @@ class HomePage(webapp.RequestHandler):
 	<li><a href="http://lib.iiserkol.ac.in/cgi-bin/gw_48_0_3_3/chameleon/">institute library</a></li>
 	<li>hostel server (currently down)</li>
 	<li><a href="http://planet.iiserk.net">planet iiserk</a></li>
+	<li><a href="/static/reach.html">how to reach iiser</a></li>
  </ul>
 </div>
 </div> <!-- closes content -->
