@@ -1,0 +1,250 @@
+/*
+	visit http://web-design-tuts.blogspot.com/ for more quality templates from me
+*/
+
+
+/* GENERAL */
+
+* { margin: 0; padding: 0; }
+
+/* fixex - This is the class name I assign to container element that contains floated child elements, no matter
+				what they are div's ul etc. */
+	.fixed:after{ content:"."; display:block; height:0; clear:both; visibility:hidden; }
+	.fixed{ display:block;}
+	/*  \*/
+	.fixed{
+		min-height:1%;
+		}
+	* html .fixed{
+		height:1%;
+		}
+
+body
+{
+	background-color:#2d2d2d;
+	color: #000; 
+   	font: 14px Arial, Verdana, Georgia, "Times New Roman", Times, serif;
+}
+
+	a { 
+		color: #0000ff; 
+		text-decoration: underline;  
+	}
+	img{ border:none;}
+	a:hover {  }
+
+/*-------[     ]---------*/
+
+#wrap{
+	width:780px;
+	
+	margin:0 auto;
+	border: 1px solid #000; border-top:none; border-bottom:none;
+	padding:0 40px 0 40px;
+	
+	background-color:#FFFFFF;	
+}
+
+
+/* HEADER*/
+
+#header{ position:relative; height:370px; }
+
+	#logo{
+	 
+		position:absolute; top:0; left:25px; z-index:99;
+		width:180px; height:140px; background-color:#FFFFFF;
+		border:1px solid #ddd; border-top:none;	
+	}
+		#logo a img{ border:none;}
+		#logo h1{ line-height:30px; text-align:center; font-size:38px; margin-top:50px; }
+		#logo h1 a { text-decoration:none; color:#111;  letter-spacing:-2px; }
+		
+	/* main navigation*/	
+	#nav ul
+	{ 
+		position:absolute; top:68px; right:5px;
+		padding:0; 
+		list-style: none;
+	}
+		#nav li{ display: inline; }
+			#nav a
+			{ 
+				display: block; 
+				float: left;
+				padding:5px 10px 5px 10px; 
+			   
+				font-family: "Trebuchete MS", Arial, Helvetica, sans-serif; color:#000;
+				text-transform:uppercase; text-decoration:none; font-weight:bold; font-size:14px; 
+			}
+			
+				#nav a:hover{ text-decoration:underline; }
+				#nav .active a{  background-color:#ff0a0a; color:#FFFFFF; }	
+				#nav .active a:hover{ text-decoration:none; }
+				
+	/*The div that contains the large image in the header*/
+	#header-img
+	{ 
+		position:absolute; top:100px; height:230px; width:770px; 
+		border: 1px solid #ddd; border-left:none; border-right:none; padding:5px;
+	}
+
+	#breadcrumbs{ position:absolute; top:350px; left:8px; font-size:12px;}
+
+
+
+/*MAIN*/
+#main{ padding:7px;}
+
+	/* SIDEBAR*/
+	#sidebar{ float:left; width:190px; height:350px;
+			  padding:20px 5px 0 5px; background:#fff url(colt-sidebar.jpg) no-repeat top right;
+	}
+		#sidebar p{ margin-bottom:5px; padding:0 20px 0 10px; text-indent:15px; line-height:16px; text-align: justify; }
+		
+		#sidebar h3{ width:90%; margin:10px auto; border-bottom:1px solid #b9b9b9; text-align:center; font-size:16px; }
+		
+		#sidebar img{   }
+		
+		#date-firma p{ margin-top:10px; padding:0 30px 0 15px; font-size:11px; text-indent:0; }
+		
+		.subnav { width:170px; }
+	
+			.subnav ul { border-top: 1px solid #ececec; padding: 0; }
+			
+			.subnav li { margin: 0; border-bottom: 1px solid #ececec; list-style: none; }
+			
+				.subnav li a 
+				{ 
+					display: block; padding: 5px 15px 5px 10px;
+					 color:#000; font-size: 85%; text-decoration: none; text-align:left;	
+				}
+				
+					.subnav li a:hover 
+					{
+						 background:/*#595248*/#ff0808 url(bg-subnav-hover.gif) no-repeat right center;
+						text-decoration:none; color:#fff;	 
+					}
+					
+					.subnav a.selected 
+					{ 
+						background:#ff0808 url(bg-subnav-selected.gif) no-repeat right center;
+						text-decoration:none; color:#fff; font-weight:bold;
+					}
+					
+
+	/*THE PAGES CONTENT*/
+	#content
+	{ 
+		width:550px; float:right;
+		padding:10px 5px 0 5px;
+	}
+	
+		#content h1{
+				 margin: 0 0 15px 0; border-bottom: 1px solid #b9b9b9; padding: 0px 0 2px 0px;
+				 font: normal 32px "Trebuchete MS", Arial, Helvetica, sans-serif; color: #111; 
+				 text-indent:15px; letter-spacing:-1px;	
+		}
+		
+		#content h2{
+				 border-bottom: 1px solid #b9b9b9; margin:0 0 15px 0; text-indent:20px; 
+				 font:bold 18px "Trebuchete MS", Arial, Helvetica, sans-serif; letter-spacing:-1px;	
+		}
+			#content h2 a{ text-decoration:none;  }
+			
+		#content p{ 
+				margin: 0 15px 15px 15px;
+				padding: 0;
+				color: #000; line-height: 22px; text-align:justify; text-indent:20px;
+		}
+		
+		#content ul{
+			font-size: 14px;	
+			margin: 10px  15px 10px 35px;
+			padding: 0;
+		}
+		
+			#content ul li{ margin-bottom:10px; }
+			
+		#content img{ display: block; clear: both; padding: 3px; background: #e5e5e5; }
+				
+			.imgfloatleft{ float:left; margin:10px; }
+			.imgfloatright{ float:right; margin:10px; }
+			
+		.notice { border: 1px solid #f2ec49; background: #fffdcb; padding:20px; margin-bottom:15px; }
+
+		
+		
+	
+/* FOOTER */
+#footer{ margin-top:10px; border-top:1px solid #ddd; padding:10px 7px 20px 7px; }
+	
+	#footer p{ margin-bottom:3px; font-size:12px;}
+	#footer p.madeby a{ color:#000; }
+	
+/* FORMS */
+fieldset {
+	margin: 0 5px 10px 0px;
+	padding: 2px;
+	border: 1px dotted #ccc;
+	
+	background-color: #fff;
+} 
+legend { background-color:#000000; color:#FFFFFF; text-transform:uppercase; padding:3px; margin-left:10px; }
+form p { margin: 5px 0 0 0; }
+label {  text-align:right; margin-right:10px; display:block; width:140px; float:left; clear:both; font-weight:bold; }
+input.text { width:225px; } 
+textarea { width: 400px; margin: 5px 15px 15px 15px; }  
+
+/* TABLES */
+
+table   { margin-bottom: 15px; }
+th      { border-bottom: 1px solid #ccc; font-weight: bold; }
+td      { border-bottom: 1px solid #ddd; }
+th,td   { padding: 4px 10px 4px 0; }
+tfoot   { font-style: italic; }
+caption { background: #ffc; }
+
+
+
+/* FeedBurner Feeds */
+div.feedburnerFeedBlock{
+	padding-right: 15px;
+	padding-left:5px;
+	font-size: 80%;
+}
+
+div.feedburnerFeedBlock a{
+	text-decoration:none;
+	color:#0099FF
+}
+
+
+/* Flickr */
+#flickr_badge_source_txt {padding:0; font: 11px Arial, Helvetica, Sans serif; color:#666666;}
+#flickr_badge_icon {display:block !important; margin:0 !important; border: 1px solid rgb(0, 0, 0) !important;}
+#flickr_icon_td {padding:0 5px 0 0 !important;}
+.flickr_badge_image {text-align:center !important;}
+.flickr_badge_image img {border: 1px solid black !important;}
+#flickr_www {display:block; padding:0 10px 0 10px !important; font: 11px Arial, Helvetica, Sans serif !important; color:#3993ff !important;}
+#flickr_badge_uber_wrapper a:hover,
+#flickr_badge_uber_wrapper a:link,
+#flickr_badge_uber_wrapper a:active,
+#flickr_badge_uber_wrapper a:visited {text-decoration:none !important; background:inherit !important;color:#3993ff;}
+#flickr_badge_wrapper {background-color:#ffffff;border: solid 1px #000000}
+#flickr_badge_source {padding:0 !important; font: 11px Arial, Helvetica, Sans serif !important; color:#666666 !important;}
+
+
+/* Validator Fix */
+div .alignfix{
+text-align: center;
+padding-left: 40px;
+}
+
+div .justifyfix{
+text-align: justify;
+}
+
+p .justifyfix{
+text-align: justify;
+}
