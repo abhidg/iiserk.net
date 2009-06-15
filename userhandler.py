@@ -23,6 +23,12 @@ from google.appengine.api import images
 from google.appengine.ext import db
 from google.appengine.ext.webapp.util import run_wsgi_app
 
+# Some lambdas to help us
+option = lambda s: "<option>" + s + "</option>"
+option_selected = lambda s: "<option selected>" + s + "</option>"
+generate_options = lambda title, id, options: \
+		"<div>%s:\n<select name='%s'>\n%s\n</select></div>" \
+		% (title, id, "\n".join(map(option, options)))
 
 class User(db.Model):						# Class to store details of individuals in the DB
 	username = db.StringProperty()				# Currently saved details alongwith datatypes:
@@ -277,7 +283,12 @@ class UserAddStep5(webapp.RequestHandler):			#Login needed, HTML generation from
  <h1>"""+ self.request.get('formuserfullname') +"""</h1>
  <div id="designation">
     <h3>iiser kolkata</h3>
-     <p>student &raquo; """+ self.request.get('formusermajor') +""" major, MS """+ self.request.get('formuseryear') +""" Year<br />
+     <p>student &raquo; """
+
+		if self.request.get('formuseryear') in ('3rd', '4th', '5th'):
+			htmlbody1 += self.request.get('formusermajor') + " major, "
+		
+		htmlbody1 += "MS " + self.request.get('formuseryear') +""" Year<br />
         batch &raquo; """+self.request.get('formuserbatch')+"""<br /></p>
  </div>
  <div id="sidephoto">
@@ -439,227 +450,23 @@ class UserEditing(webapp.RequestHandler):			# Login required for this
 					phone =""
 					
 				#Dropdown generator
-				majordrop = """
-								<div>
-								Major:
-								<select name="formusermajor">
-								<option>Biology</option>
-								<option>Chemistry</option>
-								<option>Mathematics</option>
-								<option>Physics</option>
-								</select>
-								</div>
-							"""
-				if major == "Biology" :
-					majordrop = """
-								<div>
-								Major:
-								<select name="formusermajor">
-								<option selected>Biology</option>
-								<option>Chemistry</option>
-								<option>Mathematics</option>
-								<option>Physics</option>
-								</select>
-								</div>
-							"""
-				if major == "Physics" :
-					majordrop = """
-								<div>
-								Major:
-								<select name="formusermajor">
-								<option>Biology</option>
-								<option>Chemistry</option>
-								<option>Mathematics</option>
-								<option selected>Physics</option>
-								</select>
-								</div>
-							"""
-				if major == "Mathematics" :
-					majordrop = """
-								<div>
-								Major:
-								<select name="formusermajor">
-								<option>Biology</option>
-								<option>Chemistry</option>
-								<option selected>Mathematics</option>
-								<option>Physics</option>
-								</select>
-								</div>
-							"""
-				if major == "Chemisty" :
-					majordrop = """
-								<div>
-								Major:
-								<select name="formusermajor">
-								<option>Biology</option>
-								<option selected>Chemistry</option>
-								<option>Mathematics</option>
-								<option>Physics</option>
-								</select>
-								</div>
-							"""
+				allowed_majors = ["Biology", "Chemistry", "Mathematics", "Physics", \
+						"Earth Sciences" ]
+				allowed_years = ["1st", "2nd", "3rd", "4th", "5th"]
+				allowed_beginning_years = range(2006, 2010)
+				allowed_batches = map(lambda yt: str(yt[0])+"-"+str(yt[1]), \
+						zip(allowed_beginning_years,  map(lambda year: year+5,\
+						allowed_beginning_years)))
 
+				majordrop = generate_options("Major", "formusermajor", allowed_majors)
+				majordrop = majordrop.replace(option(major), option_selected(major))
 
-				########################
-				yeardrop = """
-								<div>
-								Year:
-								<select name="formuseryear">
-								<option>1st</option>
-								<option>2nd</option>
-								<option>3rd</option>
-								<option>4th</option>
-								<option>5th</option>
-								</select>
-								</div>
-							"""
+				yeardrop = generate_options("Year", "formuseryear", allowed_years)
+				yeardrop = yeardrop.replace(option(year), option_selected(year))
 
-				
-				if year == "1st" :
-					yeardrop = """
-								<div>
-								Year:
-								<select name="formuseryear">
-								<option selected>1st</option>
-								<option>2nd</option>
-								<option>3rd</option>
-								<option>4th</option>
-								<option>5th</option>
-								</select>
-								</div>
-							"""
-				if year == "2nd" :
-					yeardrop = """
-								<div>
-								Year:
-								<select name="formuseryear">
-								<option>1st</option>
-								<option selected>2nd</option>
-								<option>3rd</option>
-								<option>4th</option>
-								<option>5th</option>
-								</select>
-								</div>
-							"""
-				if year == "3rd" :
-					yeardrop = """
-								<div>
-								Year:
-								<select name="formuseryear">
-								<option>1st</option>
-								<option>2nd</option>
-								<option selected>3rd</option>
-								<option>4th</option>
-								<option>5th</option>
-								</select>
-								</div>
-							"""
-				if year == "4th" :
-					yeardrop = """
-								<div>
-								Year:
-								<select name="formuseryear">
-								<option>1st</option>
-								<option>2nd</option>
-								<option>3rd</option>
-								<option>4th</option>
-								<option selected>5th</option>
-								</select>
-								</div>
-							"""
-				if year == "5th" :
-					yeardrop = """
-								<div>
-								Year:
-								<select name="formuseryear">
-								<option>1st</option>
-								<option>2nd</option>
-								<option>3rd</option>
-								<option>4th</option>
-								<option selected>5th</option>
-								</select>
-								</div>
-							"""
-				#######################
-				batchdrop="""
-								<div>Batch:
-								<select name="formuserbatch">
-								<option>2006-2011</option>
-								<option>2007-2012</option>
-								<option>2008-2013</option>
-								<option>2009-2014</option>
-								<option>2010-2015</option>
-								</select>
-								</div>
+				batchdrop = generate_options("Batch", "formuserbatch", allowed_batches)
+				batchdrop = batchdrop.replace(option(batch), option_selected(batch))
 
-							"""			
-				if batch == "2006-2011" :
-					batchdrop="""
-								<div>Batch:
-								<select name="formuserbatch">
-								<option selected>2006-2011</option>
-								<option>2007-2012</option>
-								<option>2008-2013</option>
-								<option>2009-2014</option>
-								<option>2010-2015</option>
-								</select>
-								</div>
-
-							"""				
-				if batch == "2007-2012" :
-					batchdrop="""
-								<div>Batch:
-								<select name="formuserbatch">
-								<option>2006-2011</option>
-								<option selected>2007-2012</option>
-								<option>2008-2013</option>
-								<option>2009-2014</option>
-								<option>2010-2015</option>
-								</select>
-								</div>
-
-							"""				
-				if batch == "2008-2013" :
-					batchdrop="""
-								<div>Batch:
-								<select name="formuserbatch">
-								<option>2006-2011</option>
-								<option>2007-2012</option>
-								<option selected>2008-2013</option>
-								<option>2009-2014</option>
-								<option>2010-2015</option>
-								</select>
-								</div>
-
-							"""				
-				if batch == "2009-2014" :
-					batchdrop="""
-								<div>Batch:
-								<select name="formuserbatch">
-								<option>2006-2011</option>
-								<option>2007-2012</option>
-								<option>2008-2013</option>
-								<option selected>2009-2014</option>
-								<option>2010-2015</option>
-								</select>
-								</div>
-
-							"""				
-				if batch == "2010-2015" :
-					batchdrop="""
-								<div>Batch:
-								<select name="formuserbatch">
-								<option>2006-2011</option>
-								<option>2007-2012</option>
-								<option>2008-2013</option>
-								<option>2009-2014</option>
-								<option selected>2010-2015</option>
-								</select>
-								</div>
-
-							"""				
-
-				######################
 				self.response.out.write("""
 							<html>
 							<head>
