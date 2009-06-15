@@ -49,7 +49,7 @@ class StudentsList(webapp.RequestHandler):
    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <link rel="stylesheet" href="/static/iiser1.css" type="text/css" />
+  <link rel="stylesheet" href="/static/style-plain.css" type="text/css" />
   <title>students' homepages</title>
 </head>
 <body>
@@ -119,7 +119,7 @@ class UserAddStep0(webapp.RequestHandler):			#
    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <link rel="stylesheet" href="/static/iiser1.css" type="text/css" />
+  <link rel="stylesheet" href="/static/style-plain.css" type="text/css" />
   <title>Webpage creator for new user</title>
 </head>
 <body>
@@ -146,7 +146,7 @@ class UserAddStep1(webapp.RequestHandler):
 					self.response.out.write("""
 								<html>
 								<head>
-					<link rel="stylesheet" href="/static/iiser1.css" type="text/css" />
+					<link rel="stylesheet" href="/static/style-plain.css" type="text/css" />
 								</head>
 								<body>
 									<div><h3>Great, so you already have a iiserk.net account.</h3></div>
@@ -161,7 +161,7 @@ class UserAddStep1(webapp.RequestHandler):
 					self.response.out.write("""
 								<html>
 								<head>
-					<link rel="stylesheet" href="/static/iiser1.css" type="text/css" />
+					<link rel="stylesheet" href="/static/style-plain.css" type="text/css" />
 								</head>
 								<body>
 									<div><h3>Sorry, but you need to have a iiserk.net account.</h3></div>
@@ -181,7 +181,7 @@ class UserAddStep2(webapp.RequestHandler):			# Login required for this
 		self.response.out.write("""
 					<html>
 					<head>
-					<link rel="stylesheet" href="/static/iiser1.css" type="text/css" />
+					<link rel="stylesheet" href="/static/style-plain.css" type="text/css" />
 					</head>
 					<body>
 						<h2>Welcome """ + loggedin.nickname() + """</h2>
@@ -663,7 +663,7 @@ class UserEditing(webapp.RequestHandler):			# Login required for this
 				self.response.out.write("""
 							<html>
 							<head>
-					<link rel="stylesheet" href="/static/iiser1.css" type="text/css" />
+					<link rel="stylesheet" href="/static/style-plain.css" type="text/css" />
 							</head>
 							<body>
 								<h2> """ + greeting + """</h2>
@@ -850,7 +850,7 @@ class AdminEditing0(webapp.RequestHandler):			# Admin Login required for this
 		self.response.out.write("""
 					<html>
 					<head>
-					<link rel="stylesheet" href="/static/iiser1.css" type="text/css" />
+					<link rel="stylesheet" href="/static/style-plain.css" type="text/css" />
 					</head>
 					<body>
 						<div><h1>Admin Page for Editing Users' pages</h1></div>

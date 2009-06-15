@@ -13,7 +13,6 @@ body {
 p,li { line-height: 1.5 }
 
 p#footer {
-	color:grey;
 	font-size: small;
 	border-top: 1px dotted grey;
 }
@@ -22,3 +21,5 @@ table#traintimings {
 	font-size: small;
 }
 
+span.nick { color: grey }
+col#k2sd, col#s2kd { background: #f0f0f0}
