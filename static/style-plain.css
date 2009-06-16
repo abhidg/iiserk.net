@@ -12,6 +12,13 @@ body {
 
 p,li { line-height: 1.5 }
 
+li a { text-decoration: none}
+
+h1 {
+	font-family: Georgia, "Times New Roman", serif;
+	font-weight: normal; color: #444;
+}
+
 p#footer {
 	font-size: small;
 	border-top: 1px dotted grey;

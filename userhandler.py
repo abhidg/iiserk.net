@@ -82,9 +82,10 @@ class StudentsList(webapp.RequestHandler):
 		self.response.out.write("""</ul>
 <p>You can email any of the users by adding @iiserk.net after the username or by mailing
 the user at his/her preferred email ID on the profile page.</p>
-<p><a href='"""+users.create_login_url("/adduser0").replace("&","&amp;")+"""'>Add</a> user's page.</p>
-<p><a href='"""+users.create_login_url("/useredit").replace("&","&amp;")+"""'>Edit</a> user's page.</p>
-<p><a href='"""+users.create_login_url("/adminedit0").replace("&", "&amp;") +"""'>Admins'</a>page.</p>
+<p><a href='"""+users.create_login_url("/adduser0").replace("&","&amp;")+"""'>add</a> yourself!&nbsp;&nbsp;&nbsp;
+<a href='"""+users.create_login_url("/useredit").replace("&","&amp;")+"""'>edit</a> your page&nbsp;&nbsp;&nbsp;
+<a href='"""+users.create_login_url("/adminedit0").replace("&", "&amp;") +"""'>admins</a> page&nbsp;&nbsp;&nbsp;</p>
+
 </body></html>""")
 
 class UserPage(webapp.RequestHandler):				#Serves out cuser homepage, $cuser is fetched from the requested url
