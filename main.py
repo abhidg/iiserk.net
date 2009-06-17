@@ -17,11 +17,12 @@
 
 __author__ = 'Sambit Bikas Pal'
 
+import os
 
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.api import urlfetch
-
+from google.appengine.ext.webapp import template
 
 class HomePage(webapp.RequestHandler):
 	def get(self):
@@ -41,75 +42,13 @@ class HomePage(webapp.RequestHandler):
 		except:
 			feedtext = """<div id="feed"> Sorry could not fetch feeds.</div>"""
 
-		page = """<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
- <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
- <meta name="verify-v1" content="UpHllLbRYQI9rBcZMnPc6Vnk7pmFZ7CtOMG8QYb3irI=" />
- <link rel="stylesheet" href="/static/iiser1.css" type="text/css" />
- <title>IISER Kolkata Students' Site</title>
+		template_values = { "feedtext": feedtext }
 
- <style type="text/css">
-	/*<![CDATA[*/
-	p.c2 {text-align: right}
-	img.c1 {border:0; width:60px;height:21px}
-	/*]]>*/
- </style>
-</head>
-
-<body>
-	<div id="content">
-	<div id="header">
-	<h1>iiser kolkata <span class="smaller">unofficial site</span></h1>
-	</div>
-""" + feedtext + """
-<div id="text">
- <p>
- We're here to write about us. Bound by a common love of science,
- this website is the showcase of what's happening with those who
- <a href="/students">study</a> at this cool place, a
- <a href="http://planet.iiserk.net">zeitgeist</a> of
- <a href="http://www.iiserkol.ac.in">IISER Kolkata</a>.
- </p>
-</div>
-
-<div id="linkbox">
- <ul>
-	<li><a href="/students">students' homepages</a></li>
-	<li><a href="http://mail.iiserk.net">webmail</a>,
-		<a href="http://mx1.iiserkol.ac.in">college webmail</a></li>
-	<li>file archives<br/><a href="http://phy.iiserk.net">physics</a>,
-		<a href="http://chem.iiserk.net">chemistry</a>,
-		<a href="http://bio.iiserk.net">biology</a>,
-		<a href="http://maths.iiserk.net">mathematics</a></li>
-
-	<li><a href="http://lib.iiserkol.ac.in/cgi-bin/gw_48_0_3_3/chameleon/">institute library</a></li>
-	<li><a href="http://planet.iiserk.net">planet iiserk</a></li>
-	<li><a href="/static/reach.html">how to reach iiser</a></li>
- </ul>
-</div>
-</div> <!-- closes content -->
-
-<!--Tracker Code -->
-<script type="text/javascript">
-	//<![CDATA[
-	var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-	document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-	//]]>
-</script><script type="text/javascript">
-	//<![CDATA[
- 	try {
-		var pageTracker = _gat._getTracker("UA-3245579-6");
-		pageTracker._trackPageview();
-	} catch(err) {}
-	//]]>
-</script><!--Tracker Code -->
-</body></html>
-		"""
+		path = os.path.join(os.path.dirname(__file__), 'static/index.html')
 
 		self.response.headers['Content-Type'] = 'text/html'
-		self.response.out.write(page)
+		self.response.out.write('blah')
+		self.response.out.write(template.render(path, template_values))
 
 home = webapp.WSGIApplication([('/', HomePage)])
 

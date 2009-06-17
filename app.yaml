@@ -61,8 +61,7 @@ handlers:
   script: userhandler.py
 
 - url: /
-  static_files: static/index.html
-  upload: static/index.html
+  script: main.py
 
 - url: /(.*)
   static_files: static/\1
