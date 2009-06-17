@@ -44,10 +44,9 @@ class HomePage(webapp.RequestHandler):
 
 		template_values = { "feedtext": feedtext }
 
-		path = os.path.join(os.path.dirname(__file__), 'static/index.html')
+		path = os.path.join(os.path.dirname(__file__), 'templates','index.html')
 
 		self.response.headers['Content-Type'] = 'text/html'
-		self.response.out.write('blah')
 		self.response.out.write(template.render(path, template_values))
 
 home = webapp.WSGIApplication([('/', HomePage)])
