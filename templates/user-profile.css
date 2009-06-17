@@ -1,0 +1,37 @@
+html {
+  background: #2d2d2d;
+}
+
+body {
+  background: white;
+  width: 780px;
+  margin: auto;
+  padding: 5px 40px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#designation {
+  width : auto;
+  font : 85% Arial, sans-serif;
+  color : grey;
+}
+
+#designation h3 {
+  font: 170% arial; color: gold;
+  text-transform: lowercase;
+  margin: 0; padding : 0;
+}
+
+#sidephoto {  float: left;  width: 300px; padding: 5px; }
+
+#about {
+  font: 90% Arial, Helvetica, sans-serif;
+  float: right; width: 400px;
+  height: 500px;  padding: 5px;
+}
+
+#contact {
+  float: left; width: auto;  padding: 5px;
+  font: 85% Arial, sans-serif;
+  color: grey;
+}

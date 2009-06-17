@@ -17,11 +17,13 @@
 __author__ = 'Sambit Bikas Pal'
 
 import cgi
+import os
 from google.appengine.api import users
 from google.appengine.ext import webapp
 from google.appengine.api import images
 from google.appengine.ext import db
 from google.appengine.ext.webapp.util import run_wsgi_app
+from google.appengine.ext.webapp import template
 
 # Some lambdas to help us
 option = lambda s: "<option>" + s + "</option>"
@@ -31,6 +33,8 @@ generate_options = lambda title, id, options: \
 		% (title, id, "\n".join(map(option, options)))
 
 fetch_valid = lambda s: s and s or ""
+
+css_path = os.path.join(os.path.dirname(__file__), 'templates', 'user-profile.css')
 
 # IISER Constants
 allowed_majors = ["Biology", "Chemistry", "Mathematics", "Physics",	"Earth Sciences" ]
@@ -133,63 +137,9 @@ class CssSpew(webapp.RequestHandler):
 class UserAddStep0(webapp.RequestHandler):			#
 	def get(self):
 		self.response.headers['Content-Type'] = 'text/html; charset=utf-8'
-		self.response.out.write("""<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-  <link rel="stylesheet" href="/static/style-plain.css" type="text/css" />
-  <title>Webpage creator for new user</title>
-</head>
-<body>
-  <h1>Webpage creator for new user</h1>
-  <h3>If you are not a student of IISER Kolkata, then no need to proceed further</h3>
-  <h3>If you are a student of IISERK</h3>
-    <p>Welcome, this page will guide you through the process
-    of creating your own webpage in a few minutes.</p>
-
-    <ul>
-      <li>If you already have an <a href="http://iiserk.net">iiserk.net</a> account, proceed to the
-        <a href='""" + users.create_login_url("/adduser2").replace("&","&amp;") + """'>login page</a>.</li>
-      <li>If you haven't got an <a href="http://iiserk.net">iiserk.net</a> account, then request one at
-        <a href="mailto:www@iiserk.net">www@iiserk.net</a>.</li>
-    </ul>
-</body>
-</html>	""")
-
-class UserAddStep1(webapp.RequestHandler):
-	def post(self):
-		acstatus = self.request.get('account')
-		if acstatus == "I have an iiserk.net account":
-					self.response.headers['Content-Type'] = 'text/html'
-					self.response.out.write("""
-								<html>
-								<head>
-					<link rel="stylesheet" href="/static/style-plain.css" type="text/css" />
-								</head>
-								<body>
-									<div><h3>Great, so you already have a iiserk.net account.</h3></div>
-									<div><p>You can now proceed to the Login page for your iiserk.net account</p>
-										<p>Click <a href='""" + users.create_login_url("/adduser2") + """'>here</a>.
-									</div>
-								</body>
-								<html>
-								""")
-		if acstatus == "I do not have one":
-					self.response.headers['Content-Type'] = 'text/html'
-					self.response.out.write("""
-								<html>
-								<head>
-					<link rel="stylesheet" href="/static/style-plain.css" type="text/css" />
-								</head>
-								<body>
-									<div><h3>Sorry, but you need to have a iiserk.net account.</h3></div>
-									<div><p>Sorry for the inconvenience, but this step is to ensure that non-iisereans don't create their webpages here.</p>
-										<p>Click <a href="/adduser3">here to request the admin to create an account for you.</a>.
-									</div>
-								</body>
-								<html>
-								""")
-
+		path = os.path.join(os.path.dirname(__file__), 'templates', 'user-login-0.html')
+		self.response.out.write(template.render(path,
+			{"login_url": users.create_login_url("/adduser2").replace("&","&amp;")}))
 
 class UserAddStep2(webapp.RequestHandler):			# Login required for this
 	def get(self):
@@ -342,39 +292,8 @@ class UserAddStep5(webapp.RequestHandler):			#Login needed, HTML generation from
 		if self.request.get('formusercss') !="":
 			csscode = self.request.get('formusercss')
 		else:
-			csscode="""body {
-  width: 720px; margin:auto;
-  background-color:transparent; padding: 10px;
-  font-family: Arial, Helvetica, sans-serif;
-  color: #333333;
-}
+			csscode = template.render(css_path, {})
 
-#designation {
-  width : auto;
-  font : 85% "Trebuchet MS", Arial, Helvetica, sans-serif;
-  color : grey;
-}
-
-#designation h3 {
-  font: 170% arial; color: gold;
-  text-transform: lowercase;
-  margin: 0; padding : 0;
-}
-
-#sidephoto {  float: left;  width: 300px; padding: 5px; }
-
-#about {
-  font: 90% Arial, Helvetica, sans-serif;
-  float: right; width: 400px;
-  height: 500px;  padding: 5px;
-}
-
-#contact {
-  float: left; width: auto;  padding: 5px;
-  font: 85% "Trebuchet MS", Arial, Helvetica, sans-serif;
-  color: grey;
-}
-				"""
 		checkflag = 0	
 		allusers = db.GqlQuery("SELECT * FROM User ORDER BY username")
 		for user in allusers:
@@ -548,50 +467,8 @@ class UserEditSubmit(webapp.RequestHandler):			#Login needed, HTML generation fr
 		if self.request.get('formusercss') !="":
 			csscode = self.request.get('formusercss')
 		else:
-			csscode="""
-				body {
-				width: 720px; margin:auto;
-				background-color:transparent; padding: 10px;
-				font-family : Arial, Helvetica, sans-serif;
-				color : #333333;
-				}
+			csscode = template.render(css_path, {})
 
-				#designation {
-				width : auto;
-				font : 85% "Trebuchet MS", Arial, Helvetica, sans-serif;
-				color : grey;
-				}
-
-				#designation h3 {
-				font : 170% arial;
-				color : gold;
-				text-transform : lowercase;
-				margin : 0;
-				padding : 0 0 0 0px;
-				}
-
-				#sidephoto {
-				float : left;
-				width : 300px;
-				padding : 5px;
-				}
-
-				#about {
-				font : 90% Arial, Helvetica, sans-serif;
-				float : right;
-				width : 400px;
-				height : 500px;
-				padding : 5px;
-				}
-
-				#contact {
-				float : left;
-				width : auto;
-				padding : 5px;
-				font : 85% "Trebuchet MS", Arial, Helvetica, sans-serif;
-				color : grey;
-				}
-				"""
 		allusers = db.GqlQuery("SELECT * FROM User ORDER BY username")
 		for user in allusers:
 			if loggedin.nickname() == user.username:
@@ -813,50 +690,8 @@ class AdminEditSubmit(webapp.RequestHandler):			#Admin Login needed, HTML genera
 		if self.request.get('formusercss') !="":
 			csscode = self.request.get('formusercss')
 		else:
-			csscode="""
-				body {
-				width: 720px; margin:auto;
-				background-color:transparent; padding: 10px;
-				font-family : Arial, Helvetica, sans-serif;
-				color : #333333;
-				}
+			csscode = template.render(css_path, {})
 
-				#designation {
-				width : auto;
-				font : 85% "Trebuchet MS", Arial, Helvetica, sans-serif;
-				color : grey;
-				}
-
-				#designation h3 {
-				font : 170% arial;
-				color : gold;
-				text-transform : lowercase;
-				margin : 0;
-				padding : 0 0 0 0px;
-				}
-
-				#sidephoto {
-				float : left;
-				width : 300px;
-				padding : 5px;
-				}
-
-				#about {
-				font : 90% Arial, Helvetica, sans-serif;
-				float : right;
-				width : 400px;
-				height : 500px;
-				padding : 5px;
-				}
-
-				#contact {
-				float : left;
-				width : auto;
-				padding : 5px;
-				font : 85% "Trebuchet MS", Arial, Helvetica, sans-serif;
-				color : grey;
-				}
-				"""
 		allusers = db.GqlQuery("SELECT * FROM User ORDER BY username")
 		foundflag=0
 		for user in allusers:
@@ -921,7 +756,6 @@ user = webapp.WSGIApplication([(r'/%7E(.*)', UserPage),
 				('/students.html', StudentsList),
 				('/students',StudentsList),
 				('/adduser0', UserAddStep0),
-				('/adduser1', UserAddStep1),
 				('/adduser2', UserAddStep2),			#Login required
 				('/adduser3', UserAddStep3),
 				('/adduser5', UserAddStep5),			#Login required
