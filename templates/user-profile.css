@@ -10,6 +10,11 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+h1 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: normal; color: #444;
+}
+
 #designation {
   width : auto;
   font : 85% Arial, sans-serif;
@@ -22,11 +27,11 @@ body {
   margin: 0; padding : 0;
 }
 
-#sidephoto {  float: left;  width: 300px; padding: 5px; }
+#sidephoto {  float: left;  width: 256px; padding: 5px; }
 
 #about {
   font: 90% Arial, Helvetica, sans-serif;
-  float: right; width: 400px;
+  float: right; width: 500px;
   height: 500px;  padding: 5px;
 }
 
@@ -34,4 +39,8 @@ body {
   float: left; width: auto;  padding: 5px;
   font: 85% Arial, sans-serif;
   color: grey;
+}
+
+#footer {
+	clear:both;
 }

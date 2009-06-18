@@ -679,7 +679,7 @@ class AdminEditSubmit(webapp.RequestHandler):			#Admin Login needed, HTML genera
 			"""
 		contact = contact_top + contact_lines + contact_bottom	
 			
-		htmlbody2="""
+		htmlbody2="""<div id="footer"></div>
 			</body>
 			</html>
 			"""
