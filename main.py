@@ -15,8 +15,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-__author__ = 'Sambit Bikas Pal'
-__author__ = 'Heman Dasgupta'
+__author__ = 'Sambit Bikas Pal\nAbhishek Dasgupta'
 
 import os
 

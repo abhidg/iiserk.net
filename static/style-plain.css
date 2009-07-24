@@ -28,5 +28,7 @@ table#traintimings {
 	font-size: small;
 }
 
+#footer { clear:both}
+
 span.nick { color: grey }
 col#k2sd, col#s2kd { background: #f0f0f0}
