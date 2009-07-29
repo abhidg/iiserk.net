@@ -36,9 +36,9 @@ div#heading, div#sidebar, div#sidebardummy {
 }
 
 div#sidebar {
-	width:200px; position:absolute;
+	width:200px;
 	height: 100%;
-	border-right: 1px solid #ddd;
+	border-right: 1px solid #dedede;
 }
 
 div#sidebar li {
