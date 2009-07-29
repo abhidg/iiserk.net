@@ -1,0 +1,80 @@
+html {
+	background: #fafafa;
+}
+
+body {
+	background: white;
+	width: 780px;
+	margin: auto;
+	color: #454545;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+
+a { text-decoration: none; color:#0028de}
+
+div#content { margin: 0px 30px}
+
+#linkbar a {padding:3px; background:#0059aa; color:#f0f0f0;
+	text-decoration: none; font-weight: bold;
+	font-size: 90%}
+#linkbar a:hover {background: #444}
+
+div#heading, div#sidebar, div#sidebardummy {
+	float:left;
+}
+
+div#sidebar {
+	width:200px; position:absolute;
+	height: 100%;
+	border-right: 1px solid #ddd;
+}
+
+div#sidebar li {
+	border-bottom: 1px dotted #eee;
+}
+
+span.postdate { color:#555;}
+
+div#header { height:60px; width:100%}
+div#logo img { border:none}
+
+img { border: 1px solid silver; padding:3px}
+
+div#logo, div#sidecontent {
+	float:right;
+}
+
+div#header { background: #fafafa}
+
+div#content {
+	clear: both;
+}
+
+p,li { line-height: 1.5 }
+
+li a { text-decoration: none}
+
+img { color: #aaa; font-size: 70%;}
+
+h1 {
+	font-family: Courier New, Arial, Helvetica, sans-serif;
+	color: #111; font-size: 200%;
+	margin-top: 10px; margin-left:20px; font-weight: normal;
+}
+
+h2 { font-size: 120%; color: #52afa4; margin-bottom: -7px}
+
+#footer {
+	clear:both;
+	padding: 5px;
+	font-size: small;
+	border-top: 1px dotted grey;
+}
+
+table#traintimings {
+	font-size: small;
+}
+
+span.nick { color: grey }
+col#k2sd, col#s2kd { background: #f0f0f0}
