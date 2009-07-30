@@ -79,6 +79,10 @@ handlers:
   static_files: static/campus-life.html
   upload: static/campus-life.html
 
+- url: /info
+  static_files: static/info.html
+  upload: static/info.html
+
 - url: /faq
   static_files: static/faq.html
   upload: static/faq.html
