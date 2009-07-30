@@ -63,6 +63,26 @@ handlers:
 - url: /
   script: main.py
 
+- url: /reach
+  static_files: static/reach.html
+  upload: static/reach.html
+
+- url: /magazine
+  static_files: static/magazine.html
+  upload: static/magazine.html
+
+- url: /faq
+  static_files: static/faq.html
+  upload: static/faq.html
+
+- url: /campus-life
+  static_files: static/campus-life.html
+  upload: static/campus-life.html
+
+- url: /faq
+  static_files: static/faq.html
+  upload: static/faq.html
+
 - url: /(.*)
   static_files: static/\1
   upload: static/(.*)
