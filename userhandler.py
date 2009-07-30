@@ -70,15 +70,21 @@ class StudentsList(webapp.RequestHandler):
    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <link rel="stylesheet" href="/static/style-plain.css" type="text/css" />
-  <title>students' homepages</title>
+  <link rel="stylesheet" href="/static/style-plain-v2.css" type="text/css" />
+  <title>iiserk.net - Students' homepages</title>
 </head>
 <body>
-  <h1>students' homepages</h1>
+<div id="header">
+
+<div id="heading"><h1>students' homepages</h1></div>
+<div id="logo"><a href="/"><img src="/static/header-small.png"/></a></div>
+</div>
+
+<div id="content">
   <p>Currently we have the following users' profiles:</p>
 """)
 
-		self.response.out.write("<ul>\n")
+		self.response.out.write("<ul id='studentslist'>\n")
 		for user in allusers:
 			self.response.out.write("""  <li><a href='/~""" + user.username + """'>""" \
 				 + user.userfullname + "</a>" + """ (<span class="nick">""" + \
@@ -86,10 +92,13 @@ class StudentsList(webapp.RequestHandler):
 		self.response.out.write("""</ul>
 <p>You can email any of the users by adding @iiserk.net after the username or by mailing
 the user at his/her preferred email ID on the profile page.</p>
-<p><a href='"""+users.create_login_url("/adduser0").replace("&","&amp;")+"""'>add</a> yourself!&nbsp;&nbsp;&nbsp;
-<a href='"""+users.create_login_url("/useredit").replace("&","&amp;")+"""'>edit</a> your page&nbsp;&nbsp;&nbsp;
-<a href='"""+users.create_login_url("/adminedit0").replace("&", "&amp;") +"""'>admins</a> page&nbsp;&nbsp;&nbsp;</p>
-
+<p><a href='/adduser0'>add</a> yourself!&nbsp;&nbsp;&nbsp;
+<a href='/useredit'>edit</a> your page&nbsp;&nbsp;&nbsp;
+<a href='/adminedit0'>admins</a> page&nbsp;&nbsp;&nbsp;</p>
+</div>
+<p id="footer" style="text-align:center">
+If you have any questions or feedback, mail us at
+<a href="mailto:www@iiserk.net">www@iiserk.net</a>.</p>
 </body></html>""")
 
 class UserPage(webapp.RequestHandler):				#Serves out cuser homepage, $cuser is fetched from the requested url
