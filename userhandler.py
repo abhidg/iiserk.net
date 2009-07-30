@@ -147,8 +147,7 @@ class UserAddStep0(webapp.RequestHandler):			#
 	def get(self):
 		self.response.headers['Content-Type'] = 'text/html; charset=utf-8'
 		path = os.path.join(os.path.dirname(__file__), 'templates', 'user-login-0.html')
-		self.response.out.write(template.render(path,
-			{"login_url": users.create_login_url("/adduser2").replace("&","&amp;")}))
+		self.response.out.write(template.render(path, {}))
 
 class UserAddStep2(webapp.RequestHandler):			# Login required for this
 	def get(self):
@@ -343,7 +342,7 @@ class UserEditing(webapp.RequestHandler):			# Login required for this
 		if loggedin:
 			greeting = ("Welcome, %s! Not %s? (<a href=\"%s\">sign out</a> and login back.)" %(loggedin.nickname(), loggedin.nickname(), users.create_logout_url("/useredit")))
 		else:
-			greeting = ("<a href=\"%s\">Sign in</a>." % users.create_login_url("/useredit"))
+			greeting = "<a href=\"/useredit\">Sign in</a>."
 
 		allusers = db.GqlQuery("SELECT * FROM User ORDER BY username")
 		for user in allusers:
