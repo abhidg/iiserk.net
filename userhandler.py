@@ -71,7 +71,7 @@ class StudentsList(webapp.RequestHandler):
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <link rel="stylesheet" href="/static/style-plain-v2.css" type="text/css" />
-  <title>iiserk.net - Students' homepages</title>
+  <title>Students' Homepages - iiserk.net</title>
 </head>
 <body>
 <div id="header">
