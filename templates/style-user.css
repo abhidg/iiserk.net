@@ -31,7 +31,8 @@ div#contact a {
 }
 
 div#about {
-    float: right; width: 500px
+    float: right; width: 500px;
+    height: 500px;
 }
 
 div#about pre { width: 390px}
