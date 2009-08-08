@@ -135,13 +135,9 @@ class ImageSpew(webapp.RequestHandler):
 
 class CssSpew(webapp.RequestHandler):
 	def get(self,cuser):
-		users = db.GqlQuery("SELECT * FROM User")	#GQL query is made to fetch user list, this has to be improved
-								#to access entries by keys
-		for user in users:
-			if user.username == cuser:		#if the requested user is found in the DB, spew out the user's image
-				self.response.headers['Content-Type'] = 'text/css'
-				self.response.out.write(user.usercss)
-
+		path = os.path.join(os.path.dirname(__file__), 'templates', 'style-user.css')
+		self.response.headers['Content-Type'] = 'text/css'
+		self.response.out.write(template.render(path, {}))
 
 class UserAddStep0(webapp.RequestHandler):			#
 	def get(self):

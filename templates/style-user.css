@@ -1,0 +1,41 @@
+h1 { font-family: "Courier New", monospace; color: black;
+	font-weight: normal }
+
+body {
+	background: white;
+	color: #444;
+	width: 780px;
+	margin: auto;
+	color: #454545;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+div#sidephoto {
+    float: left; width: 256px;
+}
+
+h3 { font-size: 150%; color: #609bce;}
+
+div#designation p { margin-top: -12px; font-size: 120%}
+div#contact {
+    float: left;
+    font-size: 80%;
+
+}
+
+div#contact h3 { font-size: 125%; color:#777;}
+div#contact p { margin-top: -10px}
+
+div#contact a {
+    text-decoration: none
+}
+
+div#about {
+    float: right; width: 500px
+}
+
+div#about pre { width: 390px}
+
+div#designation {
+    font-size: small
+}
