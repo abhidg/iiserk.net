@@ -62,6 +62,9 @@ div#content {
 	clear: both;
 }
 
+ul.linklist { list-style-type: none}
+ul.linklist li { margin-left: -20px}
+
 p,li { line-height: 1.5 }
 
 li a { text-decoration: none}
