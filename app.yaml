@@ -74,6 +74,10 @@ handlers:
   static_files: static/magazine.html
   upload: static/magazine.html
 
+- url: /clubs
+  static_files: static/clubs.html
+  upload: static/clubs.html
+
 - url: /faq
   static_files: static/faq.html
   upload: static/faq.html
